@@ -1,31 +1,16 @@
+import "./App.css";
 import { useState } from "react";
-
-import MovieList from "./components/MovieList";
-import MovieContext from "./contexts/MovieContext";
+import UserProfile from "./components/UserProfile.jsx";
+import UserContext from "./contexts/UserContext.jsx";
 
 function App() {
-	const [movies, setMovies] = useState([
-		{
-			movie_id: 1,
-			title: "Memento",
-			release_year: 200,
-		},
-		{
-			movie_id: 2,
-			title: "Zootopie",
-			release_year: 2016,
-		},
-		{
-			movie_id: 3,
-			title: "charlie et la chocolaterie",
-			release_year: 2005,
-		},
-	]);
-
+	const [isOnline, setIsOnline] = useState(true);
 	return (
-		<MovieContext.Provider value={{ movies: movies }}>
-			<MovieList />
-		</MovieContext.Provider>
+		<UserContext.Provider
+			value={{ isOnline: isOnline, setIsOnline: setIsOnline }}
+		>
+			<UserProfile />
+		</UserContext.Provider>
 	);
 }
 
